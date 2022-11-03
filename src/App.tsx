@@ -6,10 +6,6 @@ import usersFromServer from './api/users';
 import productsFromServer from './api/products';
 import categoriesFromServer from './api/categories';
 
-import { Category } from './types/Category';
-import { User } from './types/User';
-import { ProductMerged } from './types/ProductMerged';
-
 const productMerged = productsFromServer.map(product => {
   const categoryFromServer = categoriesFromServer.find(
     category => category.id === product.categoryId,
@@ -45,7 +41,7 @@ export const App: React.FC = () => {
       return toLowerCaseName.includes(toLowerCaseQuery);
     });
 
-  const handleInput = (event) => {
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
   };
 
@@ -80,7 +76,7 @@ export const App: React.FC = () => {
                 All
               </a>
 
-              {usersFromServer.map((user: User) => (
+              {usersFromServer.map((user) => (
                 <a
                   data-cy="FilterUser"
                   href="#/"
@@ -174,8 +170,8 @@ export const App: React.FC = () => {
                 className="table is-striped is-narrow is-fullwidth"
               >
                 <thead>
-                <tr>
-                  <th>
+                  <tr>
+                    <th>
                       <span className="is-flex is-flex-wrap-nowrap">
                         ID
 
@@ -185,9 +181,9 @@ export const App: React.FC = () => {
                           </span>
                         </a>
                       </span>
-                  </th>
+                    </th>
 
-                  <th>
+                    <th>
                       <span className="is-flex is-flex-wrap-nowrap">
                         Product
 
